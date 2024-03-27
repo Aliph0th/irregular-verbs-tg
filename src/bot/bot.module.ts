@@ -4,6 +4,7 @@ import { IConfigService } from '../config/config.interface';
 import { Command } from '../commands/command.class';
 import { StartCommand } from '../commands/start.command';
 import { VerbsCommand } from '../commands/verbs.command';
+import { VerbsService } from '../verbs/verbs.service';
 
 export class Bot implements IBot {
    private readonly bot: Telegraf;
@@ -13,7 +14,10 @@ export class Bot implements IBot {
    }
 
    private addCommands() {
-      this.commands.push(new StartCommand(this.bot), new VerbsCommand(this.bot));
+      this.commands.push(
+         new StartCommand(this.bot),
+         new VerbsCommand(this.bot, new VerbsService())
+      );
    }
 
    launch() {
