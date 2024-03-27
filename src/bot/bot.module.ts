@@ -1,8 +1,9 @@
 import { Telegraf } from 'telegraf';
 import { IBot } from './bot.interface';
 import { IConfigService } from '../config/config.interface';
-import { Command } from '../command/command.class';
-import { StartCommand } from '../command/start.command';
+import { Command } from '../commands/command.class';
+import { StartCommand } from '../commands/start.command';
+import { VerbsCommand } from '../commands/verbs.command';
 
 export class Bot implements IBot {
    private readonly bot: Telegraf;
@@ -12,7 +13,7 @@ export class Bot implements IBot {
    }
 
    private addCommands() {
-      this.commands.push(new StartCommand(this.bot));
+      this.commands.push(new StartCommand(this.bot), new VerbsCommand(this.bot));
    }
 
    launch() {

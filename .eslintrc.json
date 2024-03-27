@@ -10,7 +10,17 @@
    "rules": {
       "prettier/prettier": "warn",
       "@typescript-eslint/no-empty-function": "warn",
-      "@typescript-eslint/naming-convention": "warn",
+      "@typescript-eslint/naming-convention": [
+         "warn",
+         {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE"]
+         },
+         {
+            "selector": "property",
+            "format": ["camelCase", "UPPER_CASE", "snake_case"]
+         }
+      ],
       "@typescript-eslint/no-unused-vars": "warn",
       "curly": "warn",
       "no-throw-literal": "warn"
